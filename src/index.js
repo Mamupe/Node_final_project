@@ -1,4 +1,5 @@
 const express = require('express');
+const compression = require('compression');
 const cors = require('cors');
 const dotenv = require('dotenv');
 dotenv.config();
@@ -25,6 +26,8 @@ app.use((req, res, next) => {
 });
 
 app.use(cors({ origin: (origin, callback) => callback(null, true), credentials: true }));
+
+app.use(compression());
 
 app.use(express.json({ limit: '1mb' }));
 

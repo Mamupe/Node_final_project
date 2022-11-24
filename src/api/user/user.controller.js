@@ -98,4 +98,27 @@ const removeUser = async (req, res, next) => {
   }
 };
 
-module.exports = { register, login, removeUser, patchUser };
+const getUsers = async (req, res, next) => {
+  try {
+    const users = await User.find();
+    return res.json({
+      status: 200,
+      message: 'Recovered all Users',
+      data: { users },
+    });
+  } catch (error) {
+    return next(setError(500, 'Fail to recover users'));
+  }
+};
+
+const getUser = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findById(id);
+    res.status(200).json(user);
+  } catch (error) {
+    return next(error);
+  }
+};
+
+module.exports = { register, login, removeUser, patchUser, getUsers, getUser };
