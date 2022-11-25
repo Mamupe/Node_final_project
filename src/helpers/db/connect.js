@@ -1,8 +1,8 @@
-const dotenv = require("dotenv").config()
+const dotenv = require('dotenv').config();
 
-const mongoose = require("mongoose")
+const mongoose = require('mongoose');
 
-const { setError } = require('../error/handle.error')
+const { setError } = require('../error/handle.error');
 
 const mongoDB = process.env.MONGO_URI;
 
@@ -19,4 +19,4 @@ const connect = async () => {
   }
 };
 
-module.exports = { connect }
+module.exports = { connect };

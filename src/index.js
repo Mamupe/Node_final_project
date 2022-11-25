@@ -2,6 +2,29 @@ const express = require('express');
 const compression = require('compression');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
+
+const swaggerUI = require('swagger-ui-express');
+const swaggerJsDoc = require('swagger-jsdoc');
+const swaggerSpec = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Musicapi',
+      version: '1.0.0',
+    },
+    servers: [
+      {
+        url: 'http://localhost:8080',
+      },
+    ],
+  },
+  apis: [
+    `${path.join(__dirname, './api/band/band.routes.js')}`,
+    `${path.join(__dirname, './api/album/album.routes.js')}`,
+    `${path.join(__dirname, './api/user/user.routes.js')}`,
+  ],
+};
 
 dotenv.config();
 
@@ -35,6 +58,8 @@ app.use(express.json({ limit: '1mb' }));
 app.use(express.urlencoded({ limit: '1mb', extended: true }));
 
 app.set('secretKey', process.env.SECRET_KEY_JWT);
+
+app.use('/api-doc', swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(swaggerSpec)));
 
 app.use('/api/users', UserRoutes);
 app.use('/api/bands', BandRoutes);
