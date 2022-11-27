@@ -3,6 +3,49 @@ const upload = require('../../middlewares/file');
 const { isAuth } = require('../../middlewares/auth.middlewares');
 const { isAdmin } = require('../../middlewares/admin.middleware');
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     user:
+ *       type: object
+ *       properties:
+ *         username:
+ *           type: string
+ *         password:
+ *           type: string
+ *         favouriteBands:
+ *           type: string
+ *         role:
+ *           type: string
+ *         image:
+ *           type: string
+ *       required:
+ *         - username
+ *         - password
+ *         - role
+ *         - image
+ */
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     userlog:
+ *       type: object
+ *       properties:
+ *         username:
+ *           type: string
+ *         password:
+ *           type: string
+ *         role:
+ *           type: string
+ *       required:
+ *         - username
+ *         - password
+ *         - role
+ */
+
 const {
   register,
   login,
@@ -14,36 +57,75 @@ const {
 
 /**
  * @swagger
- * /api/users:
+ * /api/users/register:
  *   post:
+ *     summary: Register a new user
  *     tags: [users]
- *     description: Lets a user post a new user
+ *     description: Register a new user
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             type: object
- *             required:
- *               - username
- *               - password
- *               - image
- *             properties:
- *               username:
- *                 type: string
- *               password:
- *                 type: string
- *               favouriteBands:
- *                 type: string
- *               role:
- *                 type: string
- *               image:
- *                 type: string
+ *             $ref: "#/components/schemas/user"
  */
 
 UserRoutes.post('/register', upload.single('image'), register);
+/**
+ * @swagger
+ * /api/users/login:
+ *   post:
+ *     summary: Log a new user
+ *     tags: [users]
+ *     description: Log a new user
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/userlog"
+ *     responses:
+ *       200:
+ *         description: succes
+ */
 UserRoutes.post('/login', login);
+/**
+ * @swagger
+ * /api/users/{id}:
+ *   delete:
+ *     summary: delete a user
+ *     tags: [users]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *     description: delete a user
+ *     responses:
+ *       200:
+ *         description: Success
+ *
+ */
 UserRoutes.delete('/:id', [isAdmin], removeUser);
+/**
+ * @swagger
+ * /api/users/{id}:
+ *   patch:
+ *     summary: edit a user
+ *     tags: [users]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *     description: edit a user
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: "#/components/schemas/user"
+ *     responses:
+ *       200:
+ *         description: Success
+ *
+ */
 UserRoutes.patch('/:id', upload.single('image'), [isAuth], patchUser);
 /**
  * @swagger

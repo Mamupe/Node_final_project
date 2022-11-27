@@ -40,11 +40,20 @@ const login = async (req, res, next) => {
         req.app.get('secretKey'),
         { expiresIn: '1h' },
       );
+      const refreshToken = jwt.sign(
+        {
+          id: userInfo._id,
+          username: userInfo.username,
+          role: userInfo.role,
+        },
+        req.app.get('secretKey'),
+      );
       return res.json({
         status: 200,
         message: 'welcome User',
         user: userInfo,
         token: token,
+        refreshToken: refreshToken,
       });
     } else {
       return next('Incorrect password');
