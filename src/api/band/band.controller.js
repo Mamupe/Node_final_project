@@ -5,7 +5,10 @@ const { deleteFile } = require('../../middlewares/delete-file');
 
 const getBands = async (req, res, next) => {
   try {
-    const bands = await Band.find();
+    const { page = 1, limit = 5 } = req.query;
+    const bands = await Band.find()
+      .limit(limit * 1)
+      .skip((page - 1) * limit);
     return res.json({
       status: 200,
       message: 'Recovered all Bands',

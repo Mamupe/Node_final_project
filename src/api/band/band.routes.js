@@ -47,7 +47,7 @@ const {
  * @swagger
  * /api/bands:
  *   get:
- *     summary: return a band
+ *     summary: Get all bands
  *     tags: [bands]
  *     description: Get all bands
  *     responses:

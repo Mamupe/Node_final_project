@@ -40,7 +40,7 @@ const {
  * @swagger
  * /api/albums:
  *   get:
- *     summary: return a album
+ *     summary: Get all albums
  *     tags: [albums]
  *     description: Get all albums
  *     responses:
