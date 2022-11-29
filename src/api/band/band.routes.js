@@ -76,12 +76,8 @@ BandRoutes.get('/:id', getBand);
  * @swagger
  * /api/bands:
  *   post:
- *     security:
- *     - bearerAuth: []
- *     summary: post a band
+ *     summary: Post a new band
  *     tags: [bands]
- *     parameters:
- *     description: Lets a user post a new band
  *     requestBody:
  *       required: true
  *       content:

@@ -67,7 +67,7 @@ app.use('/api/albums', AlbumRoutes);
 
 app.use('*', (req, res, next) => next(setError(404, 'Route not found')));
 
-app.use((error, req, res, next) => {
+app.use((error, req, res) => {
   return res.status(error.status || 500).json(error.message || 'Unexpected error');
 });
 
