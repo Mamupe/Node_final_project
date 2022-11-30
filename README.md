@@ -100,7 +100,7 @@ npm run dev
 
 En la raíz de mi proyecto creo la carpeta **src,** dentro de esta crearé las carpetas: **api**, **helpers** y **middlewares**.
 
-![image text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a8de87f2-11ea-4096-b2f7-98b036b007c3/Untitled.png)
+![Screenshot](./images/Untitled.png)
 
 En la raíz igual con con la carpeta src vamos a crear los siguientes ficheros:
 
@@ -115,7 +115,7 @@ MONGO_URI=mongodb+srv://admin:admin@finalnode.ivwvv76.mongodb.net/music?retryWri
 
 La URI se genera en mongo de la siguiente manera:
 
-![image text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/c90de22e-a006-4769-babc-a0f1508230e8/mongoAtlas.gif)
+![Screenshot](./images/mongoAtlas.gif)
 
 .gitignore: Este fichero indica a git lo que debe di ignorar a la hora de subir nuestro repositorio.
 
@@ -129,7 +129,7 @@ Dentro de este archivo debemos tener la siguiente información:
 
  Hasta el momento nuestra estructura quedaría asi:
 
-![image text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/50364977-4ecb-4fe8-b514-313f1807291c/Untitled_(1).png)
+![Screenshot](./images/Untitled%20(1).png)
 
 Ahora vamos a entrar en la carpeta **helpers** (dentro de **src**) y vamos a crear otra carpeta llamada **db**, y dentro de esta carpeta crearemos un archivo llamado **connect.js**
 
@@ -223,7 +223,7 @@ Lo primero es definir la estructura de datos con la que queremos trabajar, en nu
 
 Dentro de la carpeta src/api vamos a crear tres carpetas correspondientes a los tres modelos que tenemos.
 
-![image text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/3635e6cd-bf2d-46ac-adcb-4decb862efe2/Untitled_(2).png)
+![Screenshot](/images/Untitled%20(2).png)
 
 En la carpeta **user** vamos a crear el fichero **user.model.js**
 
@@ -443,11 +443,11 @@ module.exports = upload;
 
 Importante no olvidar tener cuenta en cloudinary y crear la carpeta music en media library.
 
-![image text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7646678c-6739-4abc-b046-817eb0cf1b40/Untitled_(3).png)
+![Screenshot](./images/Untitled%20(3).png)
 
 También es importante recuperar estas contraseñas de página inicial de cloudinary ya que las usaremos en nuestro **.env:**
 
-![image text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/890427c9-dd08-4edf-a759-3c90e116902b/Untitled_(4).png)
+![Screenshot](./images/Untitled%20(4).png)
 
 Las añadiremos por este orden en el archivo **.env,** quedando de la siguiente manera:
 
@@ -1720,4 +1720,4 @@ module.exports = AlbumRoutes;
 
 Finalmente si vamos a [http://localhost:8080/api-doc](http://localhost:8080/api-doc/#/) tendríamos algo así:
 
-![image text](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/61504ea6-1659-4295-acbc-751b9619cdd6/Untitled_(5).png)
+![Screenshot](./images/Untitled%20(5).png)
